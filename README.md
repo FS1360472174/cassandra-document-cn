@@ -1,3 +1,3 @@
-# My Awesome Book
+# cassandra 文档(3.x)
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+cassandra 官方文档中文版
