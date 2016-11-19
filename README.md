@@ -21,7 +21,18 @@ Cassandra 是基于peer to peer 通信分布式的数据库。最好的实践是
 ### NoSQL 介绍
 NoSQL 通常意义上是指“不仅仅是SQ",意味着DB可以使用不同于关系型数据库的存储数据方法。目前有很多不同类型的NoSQL数据库，因此即使是之间比较常用类型的NoSQL也没什么用。今天的DBA必须要更加全能，他们必须要知道如何运维关系型数据库和NoSQL数据库。
 ### CQL 介绍
+[Cassandra Query Language(CQL)](http://docs.datastax.com/en/cql/3.3/cql/cqlIntro.html) 是Cassandra 数据库管理系统的主要接口，CQL的用法和SQL类似。CQL和SQL有着相同的表结构，行列式。CQL与SQL主要的不同是CQL不支持join和子查询.相反，Cassandra 强调数据的反范式。
 
+CQL是与Cassandra交互的首选。相比较老的Casssandra APIs,CQL性能和简单易用是大的优势
+
+[CQL 文档](http://docs.datastax.com/en/cql/3.3/index.html)
+包括了数据模型,例子,和命令参考
+
+#### 如何和Cassandra交互
+cassandra进行交互的最基础的工具就是CQL shell,cqlsh.使用cqlsh,你可以创建keyspaces,tables.增删改查表数据。Cassandra3.x需要CQL2.2+支持。如果你喜欢图像化工具,可以使用DataStax DevCenter，生产环境,DataStax 提供一系列的driver
 ### 数据迁移
 
 ###cassandra 工具
+Cassandra 自动安装了[nodetool](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsNodetool.html)
+工具，一个非常有用的命令行管理工具。另外一个默认的安装工具是[cassandra-stress](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsCStress.html)
+用来做基本的数据库负载性能测试
