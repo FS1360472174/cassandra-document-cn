@@ -15,6 +15,12 @@ cassandra 可扩展的架构意味着它有能力处理PB级数据，每秒上�
 | cassandra支持线性扩展 | Cassandra支持线性扩展，意味着可以通过简单的增加新节点来提高集群能力。例如,如果两个节点能够支持每秒100,000个事务，4个节点就能够支持每秒200,000.8个节点就能支持400,000|
 ![1](http://docs.datastax.com/en/cassandra/3.0/cassandra/images/intro_cassandra.png)
 
+**注:**
+
+> 这个地方的线性扩展稍微有误导嫌疑，真实环境中的线性扩展不可能如上这种100%线性扩展，增加了节点，节点之间的通信时间会增加，即增加了节点后，单个节点的处理能力会有所下降。笔者之前的测试显示，差不多是70%.这个可能会和具体的业务场景有关系。
+
+
+
 ### cassandra 与关系型数据库的区别
 Cassandra 是基于peer to peer 通信分布式的数据库。最好的实践是1个查询对应一张表。所以数据是非范式的。正因为如此，跨table的JOIN查询不存在，尽管可以在application中去join。
 
@@ -31,8 +37,14 @@ CQL是与Cassandra交互的首选。相比较老的Casssandra APIs,CQL性能和�
 #### 如何和Cassandra交互
 cassandra进行交互的最基础的工具就是CQL shell,cqlsh.使用cqlsh,你可以创建keyspaces,tables.增删改查表数据。Cassandra3.x需要CQL2.2+支持。如果你喜欢图像化工具,可以使用DataStax DevCenter，生产环境,DataStax 提供一系列的driver
 ### 数据迁移
+数据可以通过CQL INSERT命令，COPY命令和CSV文件方式，或者[sstableloader](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsBulkloader.html) 方式。但是实际上，你需要考虑你的客户端应用程序将如何查询表数据，需要首先定义数据模型。关系型数据库和NoSQL之间的范式改变，意味着之间将关系型数据库搬到Cassandra注定会失败。
 
 ###cassandra 工具
 Cassandra 自动安装了[nodetool](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsNodetool.html)
 工具，一个非常有用的命令行管理工具。另外一个默认的安装工具是[cassandra-stress](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsCStress.html)
 用来做基本的数据库负载性能测试
+
+**注:**
+
+> nodetool 可以用来查询节点状态，节点配置信息等等，是个非常方便，必不可少的cassandra管理工具。
+
