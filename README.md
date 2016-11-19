@@ -2,7 +2,7 @@
 
 
 ### cassandra 概况
-Apache Cassandra 是一个支持高扩展的开源NoSQL数据库。Cassandra非常适合在云、多数据中心存储结构化、非结构化的数据。Cassandra 支持高可用性，线性扩展，非常简单的在多个server上进行操作，没有单点故障。强大的动态数据模型支持提供了灵活性和快速响应。
+Apache Cassandra 是一个支持高扩展的开源NoSQL数据库。Cassandra非常适合在云、多数据中心存储结构化、非结构化的数据。Cassandra 支持高可用性，线性扩展，非常简单的在多个server上进行操作，支持单点故障。强大的动态数据模型支持提供了灵活性和快速响应。
 
 ### cassandra 工作原理
 cassandra 可扩展的架构意味着它有能力处理PB级数据，每秒上千的并发操作
