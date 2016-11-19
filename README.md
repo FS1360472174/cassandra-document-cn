@@ -16,9 +16,10 @@ cassandra 可扩展的架构意味着它有能力处理PB级数据，每秒上�
 ![1](http://docs.datastax.com/en/cassandra/3.0/cassandra/images/intro_cassandra.png)
 
 ### cassandra 与关系型数据库的区别
+Cassandra 是基于peer to peer 通信分布式的数据库。最好的实践是1个查询对应一张表。所以数据是非范式的。正因为如此，跨table的JOIN查询不存在，尽管可以在application中去join。
 
 ### NoSQL 介绍
-
+NoSQL 通常意义上是指“不仅仅是SQ",意味着DB可以使用不同于关系型数据库的存储数据方法。目前有很多不同类型的NoSQL数据库
 ### CQL 介绍
 
 ### 数据迁移
