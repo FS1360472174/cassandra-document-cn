@@ -23,6 +23,13 @@ Cassandra 是一个分区行储存的数据库，其中行通过一个不可少�
 * SSTable
 SSTable(sorted string table)是一个不可改变的数据文件，cassandra会间断性的写数据到memtable.SSTables 是只可追加，顺序存储在磁盘，不同的cassandra table单独维护。
 * CQL Table
+顺序列的集合，可以通过行来获取。一个table 有列和一个主键组成。
+
+**Cassandra 主要构成**
+
+* Gossip
+  一个peer-to-peer的通信协议，为了发现和分享集群中的节点位置和状态信息。Gossip 信息持久化的存储在每个节点的本地，当重启一个节点，可以马上使用
+
 
 
 
