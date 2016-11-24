@@ -20,7 +20,10 @@ Cassandra 是一个分区行储存的数据库，其中行通过一个不可少�
   一个集群包含一个或多个数据中心，集群可以跨越物理区域
 * 提交日志(commit log)
   所有的数据为了持久化储存，都会先写到commit log.当所有的数据都从内存中写到SSTables后，commit log 可以被存档，删除，或者回收
-* 
+* SSTable
+SSTable(sorted string table)是一个不可改变的数据文件，cassandra会间断性的写数据到memtable.SSTables 是只可追加，顺序存储在磁盘，不同的cassandra table单独维护。
+* CQL Table
+
 
 
 
