@@ -5,6 +5,6 @@ cassandra为跨多个节点、没有单节点失败、大数据量负载设计�
 
 Cassandra 是一个分区行储存的数据库，其中行通过一个不可少的主键组成表。Cassandra 架构允许授权用户通过CQL在任何数据中心的节点上连接到集群的任何节点，为了易使用，CQL使用了类似SQL的语法。和cassandra进行交互的最基础的工具就是CQL shell,cqlsh.使用cqlsh,你可以创建keyspaces,tables.增删改查表数据。Cassandra3.x需要CQL2.2+支持。如果你喜欢图像化工具,可以使用[DataStax DevCenter](http://docs.datastax.com/en/developer/devcenter/doc/devcenter/features.html)，生产环境中,DataStax 提供一系列的[driver](http://docs.datastax.com/en/developer/driver-matrix/doc/common/driverMatrix.html)。一般情况下，一个应用在集群中有一个keyspace,有很多不同的表组成。
 
-
+客户端的读或写请求可以发送到集群中的任意节点上。当一个客户端通过一个请求连接到某个节点，这个节点就作为这次请求的协作者(coordinator)。协作者相当于存储这次请求数据的cassandra节点和客户端的中间代理。协作者决定应该向ring环中的哪些节点发出请求。
 
 
