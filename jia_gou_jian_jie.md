@@ -61,7 +61,7 @@ SSTable(sorted string table)是一个不可改变的数据文件，cassandra会�
   
 * 系统keyspace表属性
 
-  你可以使用客户端，比如CQL,来设置基于每个keyspace或者每个表的存储配置属性
+  你可以使用客户端，比如CQL,编程来设置基于每个keyspace或者每个表的存储配置属性
   
 
 
