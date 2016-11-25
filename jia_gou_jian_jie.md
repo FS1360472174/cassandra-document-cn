@@ -41,11 +41,16 @@ Cassandra 是一个分区行储存的数据库，其中行通过一个不可少�
 
 * Gossip
 
-  一个peer-to-peer的通信协议，为了发现和分享集群中的节点位置和状态信息。Gossip 信息持久化的存储在每个节点的本地，当重启一个节点，可以马上获得。
+  一个peer-to-peer的通信协议，用来发现和分享集群中的节点位置和状态信息。Gossip 信息持久化的存储在每个节点的本地，当重启一个节点，可以马上获得。
 
 * Partitioner
 
-  分区器决定了哪个节点将会存储数据的第一份副本，以及如何在集群的其他节点上分布其他副本。数据的每一行有一个唯一标示primary key,有可能和partition key一样。但是也有可能还有clustering 列。分区器是一个hash算法，token值是从行的primary key hash得到。分区器使用这个token值来决定哪些节点存储该行的副本。Murmur3Partitioner 是Cassandra新版本的默认分区策略，也是几乎所有情况下的最好分区策略选择。
+  分区器决定了哪个节点将会存储数据的第一份副本，以及如何在集群的其他节点上分布其他副本。数据的每一行有一个唯一标识primary key,有可能和partition key一样。但是也有可能还有clustering 列。分区器是一个hash算法，token值是从行的primary key hash得到。分区器使用这个token值来决定哪些节点存储该行的副本。Murmur3Partitioner 是Cassandra新版本的默认分区策略，也是几乎所有情况下的最好分区策略选择。
+  
+注:
+> primary key由partition key和clustering key构成，可以没有clustering key,不可以没有partition可以
+
+
   
 * 复制因子
 
@@ -57,11 +62,11 @@ Cassandra 是一个分区行储存的数据库，其中行通过一个不可少�
   
 * 探测(Snitch)
 
-  Snitch 定义了数据中心和机架中的一组机器，副本放置策略拿来放置副本的机器。
+  Snitch 定义了数据中心和机架中的一组机器，即副本放置策略拿来放置副本的机器。
   
-  当你创建一个集群的时候你必须配置一个snitch，所有的snitches都使用动态探测层，可以监测性能，为读选择最好的副本。默认是开启的，也是适合大部分的部署的。可以在cassandra.yaml配置文件中为每个节点配置动态的snitch阈值
+  当你创建一个集群的时候你必须配置一个snitch，所有的snitches都使用动态探测层，可以监测性能，为读操作选择最好的副本。snitch默认是开启的，也是适合大部分的部署的。可以在cassandra.yaml配置文件中为每个节点配置动态的snitch阈值
   
-  默认的SimpleSnitch 不能识别数据中心和机架信息。在公有云上可以为单数据中心或者单地区的部署配置这样的策略。生产环境推荐使用GossipingPropertyFileSnitch，定义了一个节点的数据中心和机架信息。使用gossip将信息传递给其他节点。
+  默认的SimpleSnitch 不能识别数据中心和机架信息。在公有云上可以为单数据中心或者单地区的部署配置这样的策略。生产环境推荐使用GossipingPropertyFileSnitch，定义了一个节点的数据中心和机架信息。通过gossip将信息传递给其他节点。
   
 * cassandra.yaml配置文件
 
