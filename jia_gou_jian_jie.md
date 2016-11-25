@@ -29,6 +29,7 @@ SSTable(sorted string table)是一个不可改变的数据文件，cassandra会�
 
 * Gossip
   一个peer-to-peer的通信协议，为了发现和分享集群中的节点位置和状态信息。Gossip 信息持久化的存储在每个节点的本地，当重启一个节点，可以马上使用
+ 
 
 
 
