@@ -11,7 +11,10 @@ Cassandra 是一个分区行储存的数据库，其中行通过一个不可少�
 > Cassandra 默认分区，会根据partition key将数据分布在各个节点上，每个节点上都存储着这样的一份映射关系，所以coordinator知道向ring环中的哪些集群节点发出请求。
 
 
-**主要结构**
+
+## 主要结构
+
+
 * 节点(Node)
 
   存储数据的地方，是Cassandra的基本构成。
@@ -31,7 +34,10 @@ Cassandra 是一个分区行储存的数据库，其中行通过一个不可少�
  
 顺序列的集合，可以通过行来获取。一个table 有列和一个主键组成。
 
-**Cassandra 主要构成**
+
+## Cassandra 主要构成
+
+
 
 * Gossip
 
