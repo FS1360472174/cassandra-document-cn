@@ -1,5 +1,5 @@
 # 理解架构
 
 
-[架构简介](https://www.gitbook.com/book/fs1360472174/cassandra-document/edit#/edit/master/jia_gou_jian_jie.md)
+[架构简介](https://fs1360472174.gitbooks.io/cassandra-document/content/jia_gou_jian_jie.html)
 
