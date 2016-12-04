@@ -5,8 +5,7 @@ gossip过程能够跟踪其他节点的状态，通过直接(直接与某个节�
 
 节点失败可能有各种各样的原因造成的，比如硬件失败，网络电力供应中断。节点中断经常是短暂的但是有可能持续很长时间的。因为一个节点中断很少意味着永久离开集群，不会自动从集群ring中移除。其他的节点会周期性的尝试和失败的节点重新建立联系，看它们是否已经回归。想要永久的改变集群节点的成员关系，需要管理员通过notetool明确的将节点添加进来或者移除出集群。
 
-当一个节点经过down到重新回归的，可能会丢失掉它需要维护的副本数据。
-[http://docs.datastax.com/en/cassandra/3.0/cassandra/operations/opsRepairNodesTOC.html](http://docs.datastax.com/en/cassandra/3.0/cassandra/operations/opsRepairNodesTOC.html "Repair mechanisms")可以帮助恢复这些数据，比如hinted handoffs以及手动repair.节点down掉的时间决定了通过哪种机制来保持数据的一致性
+当一个节点经过down到重新回归的，可能会丢失掉它需要维护的副本数据。[repair](http://docs.datastax.com/en/cassandra/3.0/cassandra/operations/opsRepairNodesTOC.html "Repair mechanisms")可以帮助恢复这些数据，比如hinted handoffs以及手动repair.节点down掉的时间决定了通过哪种机制来保持数据的一致性。
 
 **注：**
 > hintedhandoff有时间限制，默认三小时，超过此时间前面的数据会不断的被覆盖掉。必须要手动repair
