@@ -7,4 +7,5 @@
         * [失败检测和恢复](shi_bai_jian_ce_he_hui_fu.md)
     * [分区器](分区器.md)
         * [Murmur3Partitioner](murmur3partitioner.md)
+        * [RandomPartitioner](randompartitioner.md)
 
