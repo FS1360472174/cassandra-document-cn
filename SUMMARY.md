@@ -13,4 +13,5 @@
         * [动态探测器](动态探测器.md)
         * [简单探测器](简单探测器.md)
         * [RackInferringSnitch](rackinferringsnitch.md)
+        * [PropertyFileSnitch](propertyfilesnitch.md)
 
