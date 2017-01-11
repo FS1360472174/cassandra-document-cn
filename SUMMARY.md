@@ -11,4 +11,5 @@
         * [ByteOrderedPartitioner](byteorderedpartitioner.md)
     * [探测器](探测器.md)
         * [动态探测器](动态探测器.md)
+        * [简单探测器](简单探测器.md)
 
