@@ -14,4 +14,5 @@
         * [简单探测器](简单探测器.md)
         * [RackInferringSnitch](rackinferringsnitch.md)
         * [PropertyFileSnitch](propertyfilesnitch.md)
+        * [Ec2Snitch](ec2snitch.md)
 
