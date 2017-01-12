@@ -1,0 +1,1 @@
+在[Apache Cloudstack](http://cloudstack.apache.org/)环境可以使用CloudstackSnitch.因为zone的命名是自由格式的，这种探测器使用广泛使用的<country> <location> <az>标记
