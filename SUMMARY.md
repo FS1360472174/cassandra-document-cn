@@ -16,4 +16,5 @@
         * [PropertyFileSnitch](propertyfilesnitch.md)
         * [Ec2Snitch](ec2snitch.md)
         * [Ec2MultiRegionSnitch](ec2multiregionsnitch.md)
+        * [GoogleCloudSnitch](googlecloudsnitch.md)
 
