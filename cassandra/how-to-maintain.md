@@ -23,3 +23,4 @@ STCS 在写占比高的情况下压缩效果比较好，它将读变得慢了，
 
 ### LeveledCompactionStrategy(LCS) ###
 建议用在读占比高的情况。
+
