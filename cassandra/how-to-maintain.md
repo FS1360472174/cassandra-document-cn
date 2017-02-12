@@ -40,7 +40,8 @@ LCS压缩过程确保了从L1层开始的SSTables不会有重复的数据。对�
 
 高于L0层，LCS需要更少的磁盘空间去做压缩——一般是SSTable大小的10倍。过时的数据回收的更频繁，因此删除的数据占用磁盘空间更少的比例。然而，LCS 压缩操作使用了更多的I/O操作，增加了节点的I/O负担。对于写占比高的情况，使用这种策略的获取的报酬不值得付出的I/O操作对性能造成损失的代价。在大多数情况下，配置成LCS的表的测试表明写和压缩I/O饱和了。
 
-**注：**Cassandra绕过了compaction操作，当使用LCS策略bootstrapping一个新节点到集群中。初始的数据被直接搬到正确的层级因为这儿没有已有的数据，因此每一层没有分片重复。获取更多的信息，查看[](http://www.datastax.com/dev/blog/bootstrapping-performance-improvements-for-leveled-compaction)
+**注：**
+当使用LCS策略bootstrapping一个新节点到集群中，Cassandra绕过了compaction操作。初始的数据被直接搬到正确的层级因为这儿没有已有的数据，因此每一层没有分片重复。获取更多的信息，查看[](http://www.datastax.com/dev/blog/bootstrapping-performance-improvements-for-leveled-compaction)
 
 **优势：** 磁盘空间的要求容易预测。读操作的延迟更容易预测。过时的数据回收的更及时。
 
