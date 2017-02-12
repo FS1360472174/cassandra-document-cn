@@ -61,6 +61,13 @@ TWCS配置有两个主要的属性设置
 - **compaction_window_unit:** 时间单位，用来定义窗口大小(milliseconds,seconds,hours等等)
 - **compaction_window_size:** 每个窗口有多少单元(1,2,3等等)
 
+上面配置的一个例子：compaction_window_unit = 'minutes',compaction_window_size = 60
+
+**优势:**用作时间序列数据，为表中所有数据使用默认的TTL。比DTCS配置更简单。
+
+**劣势:** 不适用于时间乱序的数据，因为SSTables不会继续做压缩，存储会没有边界的增长，所以也不适用于没有设置TTL的数据。相比较DTCS，需要更少的调优配置。
+
+### DateTieredCompactionStrategy(DTCS) ###
 
 
 
