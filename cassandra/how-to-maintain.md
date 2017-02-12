@@ -31,7 +31,7 @@ Leveled compaction —— 添加SSTables
 
 高于L1层的SSTables会被合并到一个大小大于等于sstable_size_in_md（默认值:160MB）的SSTables中。如果一个L1层的SSTable存储的一部分数据大于L2，LCS会将L2层的SSTable移动到一个更高的等级。
 
-许多插入操作之后的Leveled compaction
+**许多插入操作之后的Leveled compaction**
 ![](http://docs.datastax.com/en/cassandra/3.0/cassandra/images/dml-how-maintained-leveled-2.png)
 
 在每个高于L0层的等级中，LCS创建相同大小的SSTables。每一层大小是上一层的10倍，因此L1层的SSTable是L0层的10倍，L2层是L0层100倍。如果L1层的压缩结果超过了10倍，超出的SSTables就会被移到L2层。
