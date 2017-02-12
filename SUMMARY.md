@@ -6,8 +6,8 @@
   * [内部通信\(gossip\)](nei_bu_tong_4fe128_gossip.md)
     * [失败检测和恢复](shi_bai_jian_ce_he_hui_fu.md)
   * [分区器](分区器.md)
-    * [Murmur3Partitioner](murmur3partitioner.md)
     * [RandomPartitioner](randompartitioner.md)
+    * [Murmur3Partitioner](murmur3partitioner.md)
     * [ByteOrderedPartitioner](byteorderedpartitioner.md)
   * [探测器](探测器.md)
     * [动态探测器](动态探测器.md)
@@ -19,6 +19,7 @@
     * [GoogleCloudSnitch](googlecloudsnitch.md)
     * [CloudstackSnitch](cloudstacksnitch.md)
 * [数据库内部原理](.md)
-  * [Cassandra如何读写数据](cassandra.md)
   * [storage engine](storage-engine.md)
+  * [Cassandra如何读写数据](cassandra.md)
+    * [how to write](cassandra/how-to-write.md)
 
