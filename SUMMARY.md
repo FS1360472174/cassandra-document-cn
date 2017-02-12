@@ -19,5 +19,5 @@
     * [GoogleCloudSnitch](googlecloudsnitch.md)
     * [CloudstackSnitch](cloudstacksnitch.md)
 * [数据库内部原理](.md)
-  * [存储引擎.md](.md/.md.md)
+  * [存储引擎](.md/.md.md)
 
