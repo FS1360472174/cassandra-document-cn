@@ -70,7 +70,9 @@ TWCS配置有两个主要的属性设置
 ### DateTieredCompactionStrategy(DTCS) ###
 Cassandra 3.0.8/3.8 中弃用了。
 
-DTCS类似于STCS。但是STCS压缩事基于SSTable 大小，而DTCS是基于SSTable年纪(在一个SSTable中，每一列都标记着一个写入的时间戳。)对于一个SSTable的年纪，DTCS使用SSTable中的oldest(最小的)时间戳。
+DTCS类似于STCS。但是STCS压缩事基于SSTable 大小，而DTCS是基于SSTable年纪(在一个SSTable中，每一列都标记着一个写入的时间戳。)对于一个SSTable的年纪，DTCS使用SSTable中任意列中的oldest(最小的)时间戳。
+
+配置DTCS时间戳
 
 
 
