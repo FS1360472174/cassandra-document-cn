@@ -50,6 +50,16 @@ LCS压缩过程确保了从L1层开始的SSTables不会有重复的数据。对�
 建议用在时间序列且设置了TTL的情况。
 
 TWCS有点类似于简单设置的DTCS。TWCS通过使用一系列的时间窗口将SSTables进行分组。在compaction阶段，TWCS在最新的时间窗口内使用STCS去压缩SSTables。在一个时间窗口的结束，TWCS将掉落在这个时间窗口的所有的SSTables压缩层一个单独的SSTable，在SSTable maximum timestamp基础上。一旦一个时间窗口的主要压缩完成了，这部分数据就不会再有进一步的压缩了。这个过程结束之后SSTable开始写入下一个时间窗口。
+![](http://docs.datastax.com/en/cassandra/3.0/cassandra//images/dml-how-maintained-TWCS-1.png)
+
+如上图所示，从上午10点到上午11点，memtables flush到100MB的SSTables中。使用STCS策略将这些SSTables压缩到一个更大的SSTables中。在上午11点的时候，这些SSTables被合并到一个单独的SSTable,而且不会被TWCS再进行压缩了。在中午12点，上午11点到中午12点创建的新的SSTables被STCS进行压缩，在这个时间窗口结束的时候，TWCS压缩开始。注意在每个TWCS时间窗口包含不同大小的数据。
+
+**注:** 可以在[这里](https://academy.datastax.com/courses/ds210-datastax-enterprise-operations-apache-cassandra/time-windowed-compaction)看动画解释。
+
+TWCS配置有两个主要的属性设置
+
+- **compaction_window_unit:** 时间单位，用来定义窗口大小(milliseconds,seconds,hours等等)
+- **compaction_window_size:** 每个窗口有多少单元(1,2,3等等)
 
 
 
