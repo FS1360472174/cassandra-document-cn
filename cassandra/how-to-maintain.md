@@ -24,3 +24,4 @@ STCS 在写占比高的情况下压缩效果比较好，它将读变得慢了，
 ### LeveledCompactionStrategy(LCS) ###
 建议用在读占比高的情况。
 
+LCS减少了STCS多操作的一些问题。这种策略是通过一系列层级来工作的。首先，memtables中数据被flush到SSTables是第一层(L0)。LCS 压缩将这些第一层的SSTables合并成更大的SSTables L1。
