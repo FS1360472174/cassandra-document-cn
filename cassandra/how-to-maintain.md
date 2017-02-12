@@ -47,5 +47,6 @@ LCS压缩过程确保了从L1层开始的SSTables不会有重复的数据。对�
 **劣势:** 更高的I/O使用影响操作延迟。
 
 ### TimeWindowCompactionStrategy(TWCS) ###
+建议用在时间序列且设置了TTL的情况。
 
 
