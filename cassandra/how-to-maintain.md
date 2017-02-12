@@ -68,6 +68,6 @@ TWCS配置有两个主要的属性设置
 **劣势:** 不适用于时间乱序的数据，因为SSTables不会继续做压缩，存储会没有边界的增长，所以也不适用于没有设置TTL的数据。相比较DTCS，需要更少的调优配置。
 
 ### DateTieredCompactionStrategy(DTCS) ###
-
+Cassandra 3.0.8/3.8 中弃用。
 
 
