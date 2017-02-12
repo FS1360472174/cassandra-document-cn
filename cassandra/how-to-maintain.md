@@ -25,3 +25,9 @@ STCS 在写占比高的情况下压缩效果比较好，它将读变得慢了，
 建议用在读占比高的情况。
 
 LCS减少了STCS多操作的一些问题。这种策略是通过一系列层级来工作的。首先，memtables中数据被flush到SSTables是第一层(L0)。LCS 压缩将这些第一层的SSTables合并成更大的SSTables L1。
+
+Leveled compaction —— 添加SSTables
+![](http://docs.datastax.com/en/cassandra/3.0/cassandra/images/dml-how-maintained-leveled-1.png)
+
+高于L1层的SSTables会被合并到一个大小大于等于sstable_size_in_md（默认值:160MB）的SSTables中。如果一个L1层的SSTable存储的一部分数据大于L2，LCS会将L2层的SSTable移动到一个更高的等级。
+
