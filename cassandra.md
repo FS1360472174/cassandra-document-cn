@@ -1,4 +1,4 @@
-cassandra 如何读写
+#cassandra 如何读写#
 
 
 
@@ -16,7 +16,7 @@ hinted handoff 特征为Cassandra的ACID\(原子性，一致性，隔离性，�
 
 
 
-\#数据是如何写入的\#
+#数据是如何写入的#
 
 
 
@@ -32,7 +32,7 @@ Cassandra写的时候分好几个阶段写处理数据，从立即写一个write
 
 
 
-\*\*写Log及memtable存储\*\*
+**写Log及memtable存储**
 
 
 
@@ -46,7 +46,7 @@ Cassandra写的时候分好几个阶段写处理数据，从立即写一个write
 
 
 
-\*\*从memtable中Flushing数据\*\*
+**从memtable中Flushing数据**
 
 
 
@@ -54,13 +54,13 @@ Cassandra写的时候分好几个阶段写处理数据，从立即写一个write
 
 将数据的token map到磁盘的位置。当memtable 内容超过了配置的阈值或者commitlog的空间超过了
 
-commitlog\_total\_space\_in\_mb的值，memtable 会被放入到一个队列中，然后flush到磁盘中。这个队列可以通过
+commitlog_total_space_in_mb的值，memtable 会被放入到一个队列中，然后flush到磁盘中。这个队列可以通过
 
-cassandra.yaml文件中memtable\_heap\_space\_in\_mb,或者memtable\_offheap\_space\_in\_mb来配置。如果待flush的
+cassandra.yaml文件中memtable_heap_space_in_mb,或者memtable_offheap_space_in_mb来配置。如果待flush的
 
-数据超过了memtable\_cleanup\_threshold，Cassandra会block住写操作。直到下一次flush成功。你可以手动的flush一张表，
+数据超过了memtable_cleanup_threshold，Cassandra会block住写操作。直到下一次flush成功。你可以手动的flush一张表，
 
-使用nodetool flush 或者nodetool drain\(flushes memtables 不需要监听跟其他节点的连接\)。为了降低commit log
+使用nodetool flush 或者nodetool drain(flushes memtables 不需要监听跟其他节点的连接)。为了降低commit log
 
 的恢复时间，建议的最佳实践是在重新启动节点之前，flush memtable.如果一个节点停止了工作，将会从节点停止前开始，将commit log
 
@@ -72,7 +72,7 @@ cassandra.yaml文件中memtable\_heap\_space\_in\_mb,或者memtable\_offheap\_sp
 
 
 
-\*\* 将数据存储到磁盘中的SSTables中\*\*
+** 将数据存储到磁盘中的SSTables中**
 
 
 
@@ -86,7 +86,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Data\(Data.db\)\*\*
+**Data(Data.db)**
 
 
 
@@ -94,7 +94,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Primary Index\(Index.db\)\*\*
+**Primary Index(Index.db)**
 
 
 
@@ -102,7 +102,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Bloom filter \(Filter.db\)\*\*
+**Bloom filter (Filter.db)**
 
 
 
@@ -110,7 +110,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Compression Information\(CompressionInfo.db\)\*\*
+**Compression Information(CompressionInfo.db)**
 
 
 
@@ -118,7 +118,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Statistics\(Statistics.db\)\*\*
+**Statistics(Statistics.db)**
 
 
 
@@ -126,7 +126,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Digest\(Digest.crc32, Digest.adler32, Digest.sha1\)\*\*
+**Digest(Digest.crc32, Digest.adler32, Digest.sha1)**
 
 
 
@@ -134,7 +134,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*CRC \(CRC.db\)\*\*
+**CRC (CRC.db)**
 
 
 
@@ -142,7 +142,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*SSTable Index Summary\(SUMMARY.db\)\*\*
+**SSTable Index Summary(SUMMARY.db)**
 
 
 
@@ -150,7 +150,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*SSTable Table of Contents\(TOC.txt\)\*\*
+**SSTable Table of Contents(TOC.txt)**
 
 
 
@@ -158,7 +158,7 @@ Memtables 和 SSTables是根据每张表来维护的。而commit log则是表之
 
 
 
-\*\*Secondary Index\(SL\_.\*.db\)\*\*
+**Secondary Index(SL_.*.db)**
 
 
 
