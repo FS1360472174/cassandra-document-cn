@@ -13,4 +13,12 @@ Cassandra 支持不同类型的压缩策略，这个决定了哪些SSTables被�
 ### SizeTieredCompactionStrategy(STCS) ###
 
 建议用在写占比多的情况。
-当Cassandra 相同大小的SSTables数目达到一个固定的数目(默认是4),STCS 开始压缩。STCS将这些SSTables合并成一个大的SSTable。档
+当Cassandra 相同大小的SSTables数目达到一个固定的数目(默认是4),STCS 开始压缩。STCS将这些SSTables合并成一个大的SSTable。当这些大的SSTable数量增加，STCS将它们合并成更大的SSTables。在给定的时间范围内，SSTables大小变化如下图所示
+![](http://docs.datastax.com/en/cassandra/3.0/cassandra/images/dml-how-maintained-STCS-1.png)
+
+STCS 在写占比高的情况下压缩效果比较好，它将读变得慢了，因为根据大小来合并的过程不会将数据按行进行分组，这样使得某个特定行的多个版本更有可能分布在多个SSTables中。而且，STCS不会预期的回收删除的数据，因为触发压缩的是SSTable的大小，SSTables可能增长的足够快去合并和回收老数据。随着最大的SSTables 大小在增加，disk需要空间同时去存储老的SSTables和新的SSTables。在STCS压缩的过程中可能回超过一个节点上典型大小的磁盘大小。
+
+- **优势:** 写占比高的情况压缩很好
+- **劣势:** 可能将过期的数据保存的很久，随着时间推移，需要的内存大小随之增加。
+
+### LeveledCompactionStrategy(LCS) ###
