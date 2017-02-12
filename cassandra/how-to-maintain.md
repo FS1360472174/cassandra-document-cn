@@ -6,7 +6,7 @@ Cassandra 写入过程中将数据存入到的文件叫做SSTables.SSTables 是�
 为了保证数据库的健康性，Cassandra周期性的合并SSTables,并将老数据废弃掉。这个过程称之为合并压缩。
 
 ## 合并压缩 ##
-Cassandra 支持不同类型的压缩策略，这个决定了哪些SSTables被选中做compaction，以及压缩的行在新的SSTables中如何排序。每一种策略都有自己的优势，下面的文字解释了每一种Cassandra's compaction 策略。
+Cassandra 支持不同类型的压缩策略，这个决定了哪些SSTables被选中做compaction，以及压缩的行在新的SSTables中如何排序。每一种策略都有自己的优势，下面的段落解释了每一种Cassandra's compaction 策略。
 
 尽管下面片段的开始都介绍了一个常用的推荐，但是有很多的影响因子是的compaction策略的选择变得很复杂。
 
