@@ -115,8 +115,27 @@ LCS相比较DTCS 或者STCS，对I/O更加的敏感。换成LCS，可能需要�
 
 - 在已有的集群中设置一个新节点，使用Cassandra's wirte survey模式去获得真实线上数据样本。详情请看[Cassandra 1.1: live traffic sampling](http://www.datastax.com/dev/blog/whats-new-in-cassandra-1-1-live-traffic-sampling)
 
+### 配置启动压缩 ###
+为一个表设置压缩策略使用CREATE TABLE 或者ALTER TABLE命令。详情请看[table properties](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateTable.html#tabProp__moreCompaction)。
 
+你可以使用[nodetool compact](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsCompact.html)命令手动开始压缩。
 
+###更多关于compaction资料###
+下面这些博客和视频是开发者提供的更多关于compaction策略的测试信息。
+
+- [什么时候使用Leveled Compaction](http://www.datastax.com/dev/blog/when-to-use-leveled-compaction)
+
+- [Cassandra Leveled compaction](http://www.datastax.com/dev/blog/leveled-compaction-in-apache-cassandra)
+
+- [为时间序列的负载使用TimeWindowCompactionStrategy](https://www.youtube.com/watch?v=PWtekUWCIaw)
+
+- [DateTieredCompactionStrategy:读书笔记](http://www.datastax.com/dev/blog/dtcs-notes-from-the-field)
+
+- [Cassandra Date-Tiered Compaction](https://labs.spotify.com/2014/12/18/date-tiered-compaction/)
+
+- [DateTieredCompactionStrategy:时间序列数据的压缩](http://www.datastax.com/dev/blog/datetieredcompactionstrategy)
+
+- [当使用LCS什么造成了墓碑清除的延迟](http://stackoverflow.com/questions/27862808/what-delays-a-tombstone-purge-when-using-lcs-in-cassandra)
 
 
 
