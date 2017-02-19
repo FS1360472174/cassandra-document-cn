@@ -25,7 +25,7 @@
     * [how to maintain](cassandra/how-to-maintain.md)
     * [how to update](cassandra/how-to-update.md)
     * [How is data deleted](cassandra/how-is-data-deleted.md)
-    * How are indexes stored and updated
+    * [How are indexes stored and updated](cassandra/how-are-indexes-stored-and-updated.md)
     * how is data read
     * [how do write patterns affect reads](cassandra/how-do-write-patterns-affect-reads.md)
 
