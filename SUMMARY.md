@@ -24,4 +24,5 @@
     * [how to write](cassandra/how-to-write.md)
     * [how to maintain](cassandra/how-to-maintain.md)
     * [how to update](cassandra/how-to-update.md)
+    * [How is data deleted](cassandra/how-is-data-deleted.md)
 
