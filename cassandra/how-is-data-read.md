@@ -56,3 +56,6 @@ compression offset map存储磁盘数据准确位置的指针。存储在堆外�
 **注:** 在一个分区里，所有的行查询代价并不是一致的。在一个分区的开始（第一行，根据clustering key定义）想对来说代价更小，应为没有必要执行partition-level的index。
 
 compression offset map 每TB增长量为1~3GB。压缩的数据越多，压缩块的数量越多，压缩偏移表就会越大。Compression 默认是开启的，即使压缩过程中会消耗CPU资源。开启compression使得页缓存更加的高效,通常来说是值得的。
+
+**注:**
+> cassandra读取的数据是memtable中的数据和SStables中数据的合并结果。读取SSTables中的数据就是查找到具体的哪些的SSTables以及数据在这些SSTables中的偏移量(SSTables是按主键排序后的数据块)。首先如果row cache enable了话，会检测缓存。缓存命中直接返回数据。没有查找Bloom filter，查找可能的SSTable。然后有一层Partition key cache，找partition key的位置。如果有根据找到的partition去压缩偏移量映射表找具体的数据块。如果缓存没有，则要经过Partition summary,Partition index去找partition key。然后经过压缩偏移量映射表找具体的数据块。
