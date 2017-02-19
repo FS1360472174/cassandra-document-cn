@@ -23,4 +23,5 @@
   * [Cassandra如何读写数据](cassandra.md)
     * [how to write](cassandra/how-to-write.md)
     * [how to maintain](cassandra/how-to-maintain.md)
+    * [how to update](cassandra/how-to-update.md)
 
