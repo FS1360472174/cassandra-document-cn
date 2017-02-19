@@ -29,4 +29,10 @@ Cassandra将一个删除视为一个插入或者upsert。[DELETE](http://docs.da
 
 - 如果一个表的所有记录在创建的时候设置了TTL，以及所有的都允许过期，且不能手动删除，就没有必要为这张表定期跑[nodetool repair](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsRepair.html)
 
-- 如果使用了SizeTieredCompactionStrategy 或者 DateTieredCompactionStrateg，你可以通过[手动开启compaction](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsCompact.html)立即删除掉墓碑
+- 如果使用了SizeTieredCompactionStrategy 或者 DateTieredCompactionStrateg，你可以通过[手动开启compaction](http://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsCompact.html)立即删除掉墓碑。
+**小心：**
+如果你强制compaction,Cassandra可能从所有的数据中创建一个非常大的SSTable。Cassandra在很长的时间段中不会再触发另外一个compaction。在强制compaction期间创建的SSTable数据可能会变得非常过时在一个长的没有compaction阶段。
+
+- Cassandra 允许你为整张表设置一个默认的`_time_to_live`属性。列和行都被标记为一个TTLs;但是如果一条记录超过了表级别的TTL，Cassanda会立即将它删除，而没有标记墓碑或者compaction过程。
+
+ - Cassandra支持通过[DROP KEYSPACE](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlDropKeyspace.html) 和 [DROP TABLE](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlDropTable.html)立即执行删除。
