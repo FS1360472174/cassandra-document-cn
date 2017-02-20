@@ -28,4 +28,7 @@
     * [How are indexes stored and updated](cassandra/how-are-indexes-stored-and-updated.md)
     * [how is data read](cassandra/how-is-data-read.md)
     * [how do write patterns affect reads](cassandra/how-do-write-patterns-affect-reads.md)
+  * [一致性](.md)
+    * 一致性读写操作如何处理.md
+    * [cassandra的事务与关系型数据库有何不同](.md/cassandra.md)
 
