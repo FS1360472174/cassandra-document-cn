@@ -33,4 +33,5 @@
     * [How are Cassandra transactions different from RDBMS transactions.md](.md/how-are-cassandra-transactions-different-from-rdbms-transactions.md.md)
 * [Cql](cql.md)
   * [Cql介绍](cql/cqljie-shao.md)
+  * [CQL 数据模型](cql-shu-ju-mo-xing.md)
 
