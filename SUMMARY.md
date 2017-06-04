@@ -31,4 +31,6 @@
   * [一致性](.md)
     * [一致性读写操作如何处理.md](.md/.md.md)
     * [How are Cassandra transactions different from RDBMS transactions.md](.md/how-are-cassandra-transactions-different-from-rdbms-transactions.md.md)
+* [Cql](cql.md)
+  * [Cql介绍](cql/cqljie-shao.md)
 

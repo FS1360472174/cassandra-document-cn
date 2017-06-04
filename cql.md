@@ -1,0 +1,1 @@
+CQL介绍:http://docs.datastax.com/en/cql/3.3/index.html
