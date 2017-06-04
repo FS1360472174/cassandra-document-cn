@@ -10,7 +10,7 @@ Cassandra 查询语言（CQL）是和cassandra数据库通信的主要语言。�
 
 # CQL for Cassandra3.0功能 #
 
-## 新CQL功能 ##
+## 新增CQL功能 ##
 
 - CQL3支持[JSON](http://docs.datastax.com/en/cql/3.3/cql/cql_using/useInsertJSON.html)
 - 用户定义函数(UDFs)
