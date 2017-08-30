@@ -1,6 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
+  * [安装](an-zhuang.md)
+    * [线上linux环境配置.md](an-zhuang/xian-shang-linux-huan-jing-pei-7f6e-md.md)
 * [架构解析](chapter1.md)
   * [架构简介](jia_gou_jian_jie.md)
   * [内部通信\(gossip\)](nei_bu_tong_4fe128_gossip.md)
