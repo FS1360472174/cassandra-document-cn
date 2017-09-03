@@ -47,7 +47,7 @@ do
 done
 ```
 
-\[了解更多信息\]\([https://support.datastax.com/hc/en-us/articles/115003018063\](https://support.datastax.com/hc/en-us/articles/115003018063\)\)
+\[了解更多信息\]\([https://support.datastax.com/hc/en-us/articles/115003018063\](https://support.datastax.com/hc/en-us/articles/115003018063%29\)
 
 **确保重启后新的配置生效**
 
@@ -59,9 +59,9 @@ done
 
 在大部分的linux系统中，默认的SSD配置不是最优的，按照下面的步骤确保SSDs的最佳配置
 
-1.        确保SysFS 转动标志设置为false\(0\)
+1. 确保SysFS 转动标志设置为false\(0\)
 
-          这样可以覆盖操作系统的任何检测，确保磁盘始终是被当做SSD
+   这样可以覆盖操作系统的任何检测，确保磁盘始终是被当做SSD
 
 2. 将从SSD存储中创建的任何块设备的转动标志都设置为false
 
@@ -69,9 +69,9 @@ done
 
 4. 设置块设备的readahead值为8KB
 
-    这个设置是告诉操作系统不要读取多余的字节，这样可以提高IO时间，而且可以冲掉那些不被用户请求的缓冲字节。
+   这个设置是告诉操作系统不要读取多余的字节，这样可以提高IO时间，而且可以冲掉那些不被用户请求的缓冲字节。
 
-    例如，如果SSD是/dev/sda,在/etc/rc.local
+   例如，如果SSD是/dev/sda,在/etc/rc.local
 
 ```
 $ echo deadline > /sys/block/sda/queue/scheduler
@@ -79,18 +79,16 @@ $ echo deadline > /sys/block/sda/queue/scheduler
 #echo noop > /sys/block/sda/queue/scheduler
 touch /var/lock/subsys/local
 echo 0 > /sys/class/block/sda/queue/rotational
-echo 8 > /sys/class/block/sda/queue/read_ahead_kb 
+echo 8 > /sys/class/block/sda/queue/read_ahead_kb
 ```
 
 **最佳效果--setra setting for RAID on SSD**
 
 SSDs\(亚马逊EC2\)上面的RAID 的readahead配置是8KB,和非RAID SSDs配置是一样的。
 
-
-
 **在NUMA 系统上禁止zone\_reclaim\_mode**
 
-Linux 内核在 zone_reclaim_mode 允许/禁入的设置不一致，这样可能会导致奇怪的性能问题
+Linux 内核在 zone\_reclaim\_mode 允许/禁入的设置不一致，这样可能会导致奇怪的性能问题
 
 为了确保zone\__reclaim\_mode是禁止的_
 
@@ -98,7 +96,7 @@ Linux 内核在 zone_reclaim_mode 允许/禁入的设置不一致，这样可能
 echo 0 > /proc/sys/vm/zone_reclaim_mode
 ```
 
-\[更多信息\]\(http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/zoneReclaimMode.html\)
+\[更多信息\]\([http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/zoneReclaimMode.html\](http://docs.datastax.com/en/landing_page/doc/landing_page/cstarTroubleshooting/zoneReclaimMode.html\)\)
 
 **用户资源限制**
 
@@ -163,9 +161,7 @@ sudo sysctl -p
 cat /proc/pid/limits
 ```
 
-\[更多信息\]\(http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/insufficientResources.html\)
-
-
+\[更多信息\]\([http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/insufficientResources.html\](http://docs.datastax.com/en/landing_page/doc/landing_page/cstarTroubleshooting/insufficientResources.html\)\)
 
 **禁止swap**
 
@@ -179,13 +175,13 @@ sudo swapoff --all
 
 为了确保改变持久化，将所有的swap文件从/etc/fstab中移除
 
-\[更多信息\]\(http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/nodeFreeze.html\)
+\[更多信息\]\([http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/nodeFreeze.html\](http://docs.datastax.com/en/landing_page/doc/landing_page/cstarTroubleshooting/nodeFreeze.html\)\)
 
 **检查Java Hugepages 设置**
 
 许多现代的Linux系统默认都开启了Transparent Hugepages。当Linux 使用透明大页时，内核会尝试将内存分配大的chunk\(通常是2MB）,而不是4K。这样可以通过降低CPU需要跟踪的页的数量来提高性能。然而，一些应用仍然按照4K每页分配内存，当Linux尝试碎片整理2MB页时，这样会造成可观察到的性能问题。
 
-更多信息查看\[Cassandra Java大页\]\(https://tobert.github.io/tldr/cassandra-java-huge-pages.html\)和\[RedHat bug报告\]\(http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/zoneReclaimMode.html\)
+更多信息查看\[Cassandra Java大页\]\([https://tobert.github.io/tldr/cassandra-java-huge-pages.html\)和\[RedHat](https://tobert.github.io/tldr/cassandra-java-huge-pages.html%29和[RedHat) bug报告\]\([http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/zoneReclaimMode.html\](http://docs.datastax.com/en/landing_page/doc/landing_page/cstarTroubleshooting/zoneReclaimMode.html\)\)
 
 为了解决这个问题，将hugepages的defrag 禁掉
 
@@ -193,9 +189,7 @@ sudo swapoff --all
 echo never | sudo tee /sys/kernel/mm/transparent_hugepage/defrag
 ```
 
-更过信息，包括一个临时的修复，请看\[没有Cassandra进程，CPU使用很高\]\(http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/highCPU.html\)
-
-
+更过信息，包括一个临时的修复，请看\[没有Cassandra进程，CPU使用很高\]\([http://docs.datastax.com/en/landing\_page/doc/landing\_page/cstarTroubleshooting/highCPU.html\](http://docs.datastax.com/en/landing_page/doc/landing_page/cstarTroubleshooting/highCPU.html\)\)
 
 **设置堆大小和DataStax企业版的可选垃圾回收期**
 
@@ -212,7 +206,38 @@ echo never | sudo tee /sys/kernel/mm/transparent_hugepage/defrag
 
 为你环境中设置最佳的堆内存大小最简单的方法是:
 
-1. 在cassandra-env.sh文件中将单个节点的MAX\__HEAP\__SIZE
+1. 将单个节点的cassandra-env.sh文件中的MAX\_\_HEAP\_\_SIZE
+
+设置为一个高的任意值
+
+2. 看一下这个节点的堆使用
+
+* 开启GC logging，通过logs看下趋势
+* 在OpsCenter中使用List view
+
+3. 使用这个值作为集群中的heap siez
+
+注:这种方法会降低测试节点的性能，但是总的来说，不会显著降低集群性能。
+
+**调节堆大小当使用CMS垃圾回收期的时候**
+
+当调节CMS,有很多细微的区别。这个需要时间，专家和重复的测试来获取最好的结果。http://docs.datastax.com/en/cassandra/3.0/cassandra/operations/opsTuneJVM.html
+
+**Apply optimum blockdev --setra settings for RAID on spinning disks**
+
+通常，readahead 推荐值为128
+
+检查来确保setra没有被设置为65536
+
+```
+sudo blockdev --report /dev/spinning_disk
+```
+
+设置setra:
+
+```
+sudo blockdev --setra 128 /dev/spinning_disk
+```
 
 
 
