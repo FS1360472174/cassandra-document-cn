@@ -36,4 +36,6 @@
 * [Cql](cql.md)
   * [Cql介绍](cql/cqljie-shao.md)
   * [CQL 数据模型](cql-shu-ju-mo-xing.md)
+* [配置](pei-zhi.md)
+  * [主配置文件 cassandra.yaml](pei-zhi/cassandrayaml.md)
 
