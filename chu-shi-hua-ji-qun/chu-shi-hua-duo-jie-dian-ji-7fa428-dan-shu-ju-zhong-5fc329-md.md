@@ -23,23 +23,24 @@ Cassandra机架特性章节。
 
 1.假设你在这些节点上安装了Cassandra
 
-
+    
     ```
     node0 110.82.155.0 (seed1)
     node1 110.82.155.1
     node2 110.82.155.2
     node3 110.82.156.3 (seed2)
     node4 110.82.156.4
-    node5 110.82.156.5
-    
+    node5 110.82.156.5     
     ```
-**注：** 推荐在每个数据中心有一个以上的种子节点
+    
+   **注：** 推荐在每个数据中心有一个以上的种子节点   
+  
 
 2.如果你在集群中开启了防火墙，必须确定开启了节点之间通信的特定的端口
 
 3.如果Cassandra已经在运行了，必须要停掉机器并清除到数据，从System表中移除掉默认的集群名字(Test Cluster)，所有的节点必须使用相同的集群名字。
 
-包安装
+ 包安装
 
 a.停掉Cassandra
     
@@ -63,7 +64,7 @@ Tarball 安装：
    $sudo rm -rf /var/lib/cassandra/data/data/system/*
    
    
-4. 为每个节点设置cassandra.yaml文件的属性
+4.为每个节点设置cassandra.yaml文件的属性
   **注：**更新了cassandra.yaml文件的配置，必须要重启节点才能生效
   
   设置属性：
@@ -95,18 +96,19 @@ Tarball 安装：
    
    如果rpc_address设置成了通配符地址(0.0.0.0),那么broadcast_rpc_address必须要设置，否则这个服务不会启动。
    
- 5. 在cassandra-rackdc.properties文件中，设置你在[准备]中决定的数据中心和机架名字。例如
+ 5.在cassandra-rackdc.properties文件中，设置你在[准备]中决定的数据中心和机架名字。例如
  
  ```
    dc=DC1
    rack=RAC1
  ```
- 6. GossipingPropertyFileSnitch经常加载cassandra-topology.properties当这个文件存在的时候，在任何新的集群上或者从PropertyFileSnitch迁移过来的集群，都要在每个节点上将这个文件移除。
- 7. 当你安装和配置完所有的节点。DataStax推荐同时启动seed node。然后启动其他的节点
+ 6.GossipingPropertyFileSnitch经常加载cassandra-topology.properties当这个文件存在的时候，在任何新的集群上或者从PropertyFileSnitch迁移过来的集群，都要在每个节点上将这个文件移除。
+ 7.当你安装和配置完所有的节点。DataStax推荐同时启动seed node。然后启动其他的节点
  
  **注：**如果一个节点因为自动重启而重启了，你必须首先停止这个节点，然后清除掉文件目录。
  
- 8. 检查ring是否启动工作
+ 8.检查ring是否启动工作
+ 
  包安装
  `nodetool status`
  Tarball安装
