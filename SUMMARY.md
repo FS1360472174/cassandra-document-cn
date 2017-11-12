@@ -1,8 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-  * [安装](an-zhuang.md)
-    * [线上linux环境配置.md](an-zhuang/xian-shang-linux-huan-jing-pei-7f6e-md.md)
 * [架构解析](chapter1.md)
   * [架构简介](jia_gou_jian_jie.md)
   * [内部通信\(gossip\)](nei_bu_tong_4fe128_gossip.md)
@@ -36,6 +34,11 @@
 * [Cql](cql.md)
   * [Cql介绍](cql/cqljie-shao.md)
   * [CQL 数据模型](cql-shu-ju-mo-xing.md)
+* [安装](an-zhuang.md)
+  * [线上linux环境配置.md](an-zhuang/xian-shang-linux-huan-jing-pei-7f6e-md.md)
 * [配置](pei-zhi.md)
   * [主配置文件 cassandra.yaml](pei-zhi/cassandrayaml.md)
+* [初始化集群](chu-shi-hua-ji-qun.md)
+  * [初始化多节点集群\(单数据中心\).md](chu-shi-hua-ji-qun/chu-shi-hua-duo-jie-dian-ji-7fa428-dan-shu-ju-zhong-5fc329-md.md)
+* [操作](cao-zuo.md)
 
