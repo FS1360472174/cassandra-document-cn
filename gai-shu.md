@@ -54,3 +54,7 @@ Cassandra 自动安装了[nodetool](http://docs.datastax.com/en/cassandra/3.0/ca
 
 > nodetool 可以用来查询节点状态，节点配置信息等等，是个非常方便，必不可少的cassandra管理工具。
 
+想学习了解更多NoSQL技术，请关注公众号NoSQL开发
+
+![](/assets/qrcode_for_gh_c98f244e174d_258.jpg)
+
